@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoJS</title>
+</head>
+
+<body>
+    <h1>TodoJS
+        <form action="">
+            <input type="text" name="todo" id="todo-input">
+            <button id="submit-btn" type="button">submit</button>
+        </form>
+        <ul id="result"></ul>
+    </h1>
+    <script type="text/javascript">
+        var submintBtn = document.getElementById('submit-btn');
+        var result = document.getElementById('result');
+        submintBtn.addEventListener('click', function(e) {
+            var todoInput = document.getElementById('todo-input').value;
+            if (todoInput !== '') {
+                var todo = document.createElement('LI')
+                todo.innerHTML = todoInput + '<button>X</button>';
+                result.appendChild(todo);
+                document.getElementById('todo-input').value = '';
+            } else {
+                alert('請輸入值');
+            }
+        });
+        result.addEventListener('click', function(e) {
+            console.log(e.target.parentNode.parentNode);
+            e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+        });
+    </script>
+</body>
+
+</html>
